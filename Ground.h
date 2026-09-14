@@ -1,0 +1,24 @@
+#pragma once
+#include "Engine\\GameObject.h"
+class Ground :
+    public GameObject
+{
+public:
+    //コンストラクタ
+    //引数:parent 親オブジェクト(SceneManager)
+    Ground(GameObject* parent);
+    ~Ground();
+    //初期化
+    void Initialize()override;
+    //更新
+    void Update()override;
+    //描画
+    void Draw()override;
+    //解放
+    void Release()override;
+    int GetModelHandole() { return hModel_; }
+private:
+    int hModel_; //地面モデルのハンドル
+
+};
+
