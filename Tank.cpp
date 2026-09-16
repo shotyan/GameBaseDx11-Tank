@@ -43,7 +43,7 @@ void Tank::Update()
 	XMMATRIX matRot = XMMatrixRotationY(XMConvertToRadians(transform_.rotate_.y)); //Y軸回転行列を作る
 	XMVECTOR vMove = XMVector3TransformCoord(vFront, matRot);
 
-	if (Input::IsKey(DIK_C))
+	if (Input::IsKeyDown(DIK_C))
 	{
 		camType_ = (camType_ + 1) % CAM_TYPE_MAX;
 	}
@@ -104,7 +104,8 @@ void Tank::Update()
 	}
 	if (Input::IsKey(DIK_S))
 	{
-
+		vPos = vPos - moveSpeed * vMove;
+		XMStoreFloat3(&transform_.position_, vPos); //ストア：書き込み（格納）
 	}
 
 	//レイキャストして、浮いてたら、地面まで落とす
