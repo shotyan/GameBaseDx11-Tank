@@ -25,7 +25,7 @@ void ClearScene::Update()
 
 void ClearScene::Draw()
 {
-	transform_.scale_ = { 0.8f, 0.7f, 0.8f }; //画像の大きさを変更
+	transform_.scale_ = { 1.0f, 1.0f, 1.0f }; //画像の大きさを変更
 	Image::SetTransform(hClearPic_, transform_); //画像の位置や向きなどを設定
 	Image::Draw(hClearPic_); //画像を表示
 }
