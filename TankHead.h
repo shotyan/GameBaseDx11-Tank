@@ -12,6 +12,6 @@ class TankHead :
     void Release()override;
 private:
     int  hModel_; //タンクヘッドのモデル
-
+	float bulletSpeed_ = 0.2f; //弾のスピード
 };
 

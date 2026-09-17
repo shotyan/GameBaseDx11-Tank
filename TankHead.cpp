@@ -25,6 +25,18 @@ void TankHead::Update()
 	{
 		transform_.rotate_.y += 2.0f;
 	}
+	if(Input::IsKeyDown(DIK_UP))
+	{
+		bulletSpeed_ += 0.05f;
+	}
+	if (Input::IsKeyDown(DIK_DOWN))
+	{
+		bulletSpeed_ -= 0.05f;
+		if (bulletSpeed_ < 0.2f)
+		{
+			bulletSpeed_ = 0.2f;
+		}
+	}
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
 		XMFLOAT3 cannonTop = Model::GetBonePosition(hModel_, "Top");
@@ -33,7 +45,7 @@ void TankHead::Update()
 		XMVECTOR vRoot = XMLoadFloat3(&cannonRoot);
 		XMVECTOR vMove = XMVectorSubtract(vTop, vRoot);
 		//XMVECTOR vMove = vRoot - vTop;
-		vMove = 0.2f * vMove;
+		vMove = bulletSpeed_ * vMove;
 		XMFLOAT3 move;
 		XMStoreFloat3(&move, vMove); //XMFLOAT3に戻す
 
